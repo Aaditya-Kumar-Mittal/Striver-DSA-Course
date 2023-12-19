@@ -1,0 +1,35 @@
+------------------------------------------------------------------------------------------------
+Printing Vector's v size: 4
+Printing Vector's v elements: 1 2 3 4 
+------------------------------------------------------------------------------------------------
+Printing Vector's v size after emplace_back: 5
+Printing Vector's v elements after emplace_back: 1 2 3 4 2 
+------------------------------------------------------------------------------------------------
+Printing Pair Vector Size:1
+Printing Pair Vector Elements:1,5
+Printing Pair Vector Size after emplace back:2
+Printing Pair Vector Elements after emplace back:24,2
+------------------------------------------------------------------------------------------------
+Printing Vector's vec1 size: 5
+Printing Vector's vec1 elements: 100 100 100 100 100 
+
+Printing Vector's vec2 size: 5
+Printing Vector's vec2 elements: 0 0 0 0 0 
+
+------------------------------------------------------------------------------------------------
+*****************Creating copies of a vector*************
+Printing Vector's v1 size: 5
+Printing Vector's v1 elements: 20 20 20 20 20 
+Printing Copy Vector's v2 size: 5
+Printing Copy Vector's v2 elements: 20 20 20 20 20 
+------------------------------------------------------------------------------------------------
+***************Iterations in a Vector***********
+1
+2
+4
+Accessing using vec3.at(0): 1
+-1751738988
+5
+1
+5
+------------------------------------------------------------------------------------------------
