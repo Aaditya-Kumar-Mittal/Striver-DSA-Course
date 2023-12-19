@@ -126,12 +126,23 @@ void explainVectors()
     vector<int> vec3 = {1, 2, 3, 4, 5};
     vector<int>::iterator it = vec3.begin();
 
+    // vec3.begin() points to memory where 1 is stored
+
     cout << *(it) << endl;
     it++;
     cout << *(it) << endl;
 
+    it += 2;
+
+    cout << *(it) << endl;
 
     std::cout << "Accessing using vec3.at(0): " << vec3.at(0) << std::endl;
+
+    vector<int>::iterator endit = vec3.end();
+    cout<<*(endit)<<endl; //Points to a location at the end of vector container i.e after 5;
+    endit--;
+    cout<<*(endit)<<endl; 
+
 
     cout << "------------------------------------------------------------------------------------------------" << endl;
 }
