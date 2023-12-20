@@ -139,10 +139,150 @@ void explainVectors()
     std::cout << "Accessing using vec3.at(0): " << vec3.at(0) << std::endl;
 
     vector<int>::iterator endit = vec3.end();
-    cout<<*(endit)<<endl; //Points to a location at the end of vector container i.e after 5;
+    cout << *(endit) << endl; // Points to a location at the end of vector container i.e after 5;
     endit--;
-    cout<<*(endit)<<endl; 
+    cout << *(endit) << endl;
 
+    vector<int>::reverse_iterator rendit = --vec3.rend();
+    std::cout << *(rendit) << std::endl;
+    vector<int>::reverse_iterator rbeginit = vec3.rbegin()--;
+    std::cout << *(rbeginit) << std::endl;
+
+    cout << vec3[0] << " " << vec3.at(0) << endl;
+
+    cout << vec3.back() << endl;
+
+    cout << "Printing all elements using iterator: ";
+    for (vector<int>::iterator i = vec3.begin(); i != vec3.end(); i++)
+    {
+        cout << *i << " ";
+    }
+    cout << endl;
+    cout << endl;
+
+    cout << "Printing all elements using auto iterator: ";
+    for (auto i = vec3.begin(); i != vec3.end(); i++)
+    {
+        cout << *i << " ";
+    }
+    cout << endl;
+    cout << endl;
+
+    cout << "Printing all elements using for each loop: ";
+    for (auto i : vec3)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+    cout << endl;
+
+    cout << "------------------------------------------------------------------------------------------------" << endl;
+
+    std::cout << "****************Deletion in a vector: **********************" << std::endl
+              << endl
+              << endl;
+
+    vector<int> vec4 = {1, 2, 3, 4, 5};
+
+    std::cout << "Before Deletion: " << std::endl;
+    std::cout << "Vector4 Size:" << vec4.size() << std::endl;
+    std::cout << "Vector4's elements: " << std::endl;
+    for (auto i : vec4)
+    {
+        cout << i << " ";
+    }
+
+    cout << endl;
+    cout << endl;
+
+    std::cout << "After Deletion: " << std::endl;
+    vec4.erase(vec4.begin() + 1);
+    vec4.erase(vec4.begin() + 1);
+    vec4.erase(vec4.begin() + 1);
+    std::cout << "Vector4 Size:" << vec4.size() << std::endl;
+    std::cout << "Vector4's elements: " << std::endl;
+    for (auto i : vec4)
+    {
+        cout << i << " ";
+    }
+
+    cout << endl;
+    cout << endl;
+
+    vector<int> vec5 = {10, 20, 30, 40, 50};
+
+    std::cout << "Before Deletion of range: " << std::endl;
+    std::cout << "Vector5 Size:" << vec5.size() << std::endl;
+    std::cout << "Vector5's elements: " << std::endl;
+    for (auto i : vec5)
+    {
+        cout << i << " ";
+    }
+
+    cout << endl;
+    cout << endl;
+
+    std::cout << "After Deletion of range: " << std::endl;
+    vec5.erase(vec5.begin() + 2, vec5.begin() + 4); //{start, to toll which want to delete +1}
+    std::cout << "Vector5 Size:" << vec5.size() << std::endl;
+    std::cout << "Vector5's elements: " << std::endl;
+    for (auto i : vec5)
+    {
+        cout << i << " ";
+    }
+
+    cout << endl;
+    cout << endl;
+
+    cout << "------------------------------------------------------------------------------------------------" << endl;
+    cout << endl;
+    cout << endl;
+
+    std::cout << "***************** Insertion in a vector **********************" << std::endl;
+
+    std::cout << "After Insertion: " << std::endl;
+    vec5.insert(vec5.begin() + 2, 3555);
+    std::cout << "Vector5 Size:" << vec5.size() << std::endl;
+    std::cout << "Vector5's elements: " << std::endl;
+    for (auto i : vec5)
+    {
+        cout << i << " ";
+    }
+
+    cout << endl;
+    cout << endl;
+
+    std::cout << "After Insertion Many Elements Identical: " << std::endl;
+    vec5.insert(vec5.begin() + 2, 5, 3555);
+    std::cout << "Vector5 Size: " << vec5.size() << std::endl;
+    std::cout << "Vector5's elements: " << std::endl;
+    for (auto i : vec5)
+    {
+        cout << i << " ";
+    }
+
+    cout << endl;
+    cout << endl;
+
+    std::cout << "Pop_Back Function: " << std::endl;
+    vec5.pop_back();
+    std::cout << "Vector5 Size: " << vec5.size() << std::endl;
+    std::cout << "Vector5's elements: " << std::endl;
+    for (auto i : vec5)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+    cout << endl;
+
+    std::cout << "Clear Function: " << std::endl;
+    vec5.clear();
+    std::cout << "Vector5 Size: " << vec5.size() << std::endl;
+    std::cout << "Vector5's elements: " << std::endl;
+    for (auto i : vec5)
+    {
+        cout << i << " ";
+    }
 
     cout << "------------------------------------------------------------------------------------------------" << endl;
 }
