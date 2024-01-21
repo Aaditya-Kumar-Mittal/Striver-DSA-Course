@@ -1,0 +1,4 @@
+Array before SORTING: 
+50 40 30 21 10 
+Array after SORTING: 
+10 21 30 40 50 
