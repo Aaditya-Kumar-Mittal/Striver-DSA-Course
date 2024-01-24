@@ -1,4 +1,4 @@
-Array before SORTING: 
+Array before SORTING:
 3 4 1 2 3 
-Array after SORTING: 
+Array after SORTING:
 1 2 3 3 4 
