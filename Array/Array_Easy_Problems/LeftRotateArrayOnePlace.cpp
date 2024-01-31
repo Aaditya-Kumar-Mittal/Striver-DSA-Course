@@ -5,6 +5,17 @@ Aaditya Kumar Mittal - Was a song once heard, but have been singing all my life.
 #include <bits/stdc++.h>
 using namespace std;
 
+void RotateElementsOnePlace(vector<int> &a, int n)
+{
+    int temp = a[0];
+    for (int i = 1; i < n; i++)
+    {
+        a[i - 1] = a[i];
+    }
+
+    a[n - 1] = temp;
+}
+
 int main()
 {
     int n;
@@ -16,15 +27,14 @@ int main()
         cin >> arr[i];
     }
 
-    int d;
-    cin >> d;
-
     cout << "Printing Array Elements: " << endl;
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
     cout << endl;
+
+    RotateElementsOnePlace(arr, n);
 
     cout << "Printing Array Elements: " << endl;
     for (int i = 0; i < n; i++)
@@ -39,8 +49,8 @@ int main()
 /*
 Analysis of Problem
 
-Name:-
-Time Complexity:-
-Space Complexity:-
+Name:- Rotate Array By one place
+Time Complexity:- O(N)
+Space Complexity:- O(1) storing the first element
 
 */
