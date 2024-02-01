@@ -5,6 +5,7 @@ Aaditya Kumar Mittal - Was a song once heard, but have been singing all my life.
 #include <bits/stdc++.h>
 using namespace std;
 
+
 int main()
 {
     int n;
@@ -16,24 +17,12 @@ int main()
         cin >> arr[i];
     }
 
-    int d;
-    cin >> d;
-
     cout << "Printing Array Elements: " << endl;
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
     cout << endl;
-
-    cout << "Printing Array Elements: " << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-
-    return 0;
 }
 
 /*
