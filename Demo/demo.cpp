@@ -5,7 +5,6 @@ Aaditya Kumar Mittal - Was a song once heard, but have been singing all my life.
 #include <bits/stdc++.h>
 using namespace std;
 
-
 int main()
 {
     int n;
