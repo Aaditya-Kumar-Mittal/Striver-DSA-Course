@@ -22,13 +22,14 @@ int main()
         cout << arr[i] << " ";
     }
     cout << endl;
+
+    return 0;
 }
 
 /*
 Analysis of Problem
 
-Name:-
-Time Complexity:-
-Space Complexity:-
-
+Name:
+Time Complexity:
+Space Complexity:
 */
