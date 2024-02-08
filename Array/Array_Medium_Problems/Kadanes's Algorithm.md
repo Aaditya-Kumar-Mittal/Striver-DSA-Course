@@ -74,7 +74,7 @@ int main()
 
 ### Python
 
-``` Python
+```Python
 def kadanes_maximum_subarray_sum(arr):
     max_sum = float('-inf')
     current_sum = 0
