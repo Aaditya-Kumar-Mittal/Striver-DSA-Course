@@ -23,7 +23,7 @@ Kadane's algorithm is used to find the maximum sum of a contiguous subarray with
 
 ### C++
 
-````cpp
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -71,11 +71,11 @@ int main()
 
     return 0;
 }
-````
+```
 
 ### PYTHON
 
-````python
+```python
 def kadanes_maximum_subarray_sum(arr):
     max_sum = float('-inf')
     current_sum = 0
@@ -92,8 +92,7 @@ def kadanes_maximum_subarray_sum(arr):
 arr = list(map(int, input().split()))
 print("The max sum for a subarray in the given array using Kadane's Algorithm is:", kadanes_maximum_subarray_sum(arr))
 
-````
-
+```
 
 ### JAVA
 
