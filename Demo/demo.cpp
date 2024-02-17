@@ -16,6 +16,9 @@ int main()
         cin >> arr[i];
     }
 
+    int K;
+    cin >> K;
+
     cout << "Printing Array Elements: " << endl;
     for (int i = 0; i < n; i++)
     {
@@ -32,4 +35,5 @@ Analysis of Problem
 Name:
 Time Complexity:
 Space Complexity:
+
 */
