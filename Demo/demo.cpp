@@ -1,8 +1,5 @@
-/*
-Aaditya Kumar Mittal - Was a song once heard, but have been singing all my life.
-*/
-
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main()
@@ -15,9 +12,6 @@ int main()
     {
         cin >> arr[i];
     }
-
-    int K;
-    cin >> K;
 
     cout << "Printing Array Elements: " << endl;
     for (int i = 0; i < n; i++)
@@ -32,7 +26,7 @@ int main()
 /*
 Analysis of Problem
 
-Name:
+Problem Statement:
 Time Complexity:
 Space Complexity:
 
