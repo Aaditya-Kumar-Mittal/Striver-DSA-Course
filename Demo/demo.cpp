@@ -8,6 +8,7 @@ Aaditya Kumar Mittal - All the bright and beautiful things fade so fast and they
 
 using namespace std;
 
+
 int main()
 {
 
@@ -26,8 +27,6 @@ int main()
         cout << array[i] << " ";
     }
     cout << endl;
-
-    return 0;
 }
 
 /*

@@ -86,7 +86,7 @@ int main()
     cout << target << " element found at index : " << binarySearchIndex2 << " (Recursive)" << endl;
 
     // Using STL binary_search function 1 means true and 0 means false
-    cout << target << " element found at index : " << binary_search(array.begin(), array.end(), target) << " (STL)" << endl;
+    cout << target << " exists in the array or not ( 1  means true / 0 means false ) : " << binary_search(array.begin(), array.end(), target) << " (STL)" << endl;
 
     return 0;
 }
