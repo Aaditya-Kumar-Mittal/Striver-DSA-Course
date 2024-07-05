@@ -1,0 +1,5 @@
+Printing Array1 Elements: 1 3 4 7 10 12 
+Printing Array2 Elements: 2 3 6 15 
+Median of 2 sorted arrays using Brute Force Approach: 5
+Median of 2 sorted arrays using Optimized Approach: 5
+Median of 2 sorted arrays using Binary Search Approach: -1.07374e+009
