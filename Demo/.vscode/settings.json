@@ -61,6 +61,7 @@
     "type_traits": "cpp",
     "array": "cpp",
     "string": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "ostream": "cpp"
   }
 }
