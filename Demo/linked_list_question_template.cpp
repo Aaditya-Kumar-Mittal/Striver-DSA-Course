@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -45,51 +44,70 @@ void printLinkedList(Node *head)
   cout << endl;
 }
 
-Node *addTwoNumbers(Node *head1, Node *head2)
+Node *removeNthFromEndTwoPointers(Node *head, int k)
+{
+  Node *fast = head, *slow = head;
+
+  for (int i = 0; i < k; i++)
+    fast = fast->next;
+
+  if (fast == nullptr)
+    return head->next;
+
+  while (fast->next != nullptr)
+  {
+    fast = fast->next;
+    slow = slow->next;
+  }
+
+  Node *deleteNode = slow->next;
+
+  slow->next = deleteNode->next;
+
+  delete deleteNode;
+
+  return head;
+}
+
+Node *removeNthFromEndBruteForce(Node *head, int k)
 {
 
-  Node *t1 = head1, *t2 = head2;
+  Node *temp = head;
 
-  Node *dummyNode = new Node(-1);
+  int count = 0;
 
-  Node *currentNode = dummyNode;
-
-  int carry = 0;
-
-  while (t1 != nullptr || t2 != nullptr)
+  while (temp != nullptr)
   {
+    count++;
 
-    int sum = carry;
-
-    if (t1)
-      sum += t1->data;
-
-    if (t2)
-      sum += t2->data;
-
-    Node *newNode = new Node(sum % 10);
-
-    carry = sum / 10;
-
-    currentNode->next = newNode;
-
-    currentNode = newNode;
-
-    if (t1)
-      t1 = t1->next;
-
-    if (t2)
-      t2 = t2->next;
+    temp = temp->next;
   }
 
-  if (carry)
-  {
-    Node *newNode = new Node(carry);
+  if (count == k)
+    return head->next;
 
-    currentNode->next = newNode;
+  int resultant = count - k;
+
+  temp = head;
+
+  while (temp != nullptr)
+  {
+
+    resultant--;
+
+    if (resultant == 0)
+      break;
+
+    temp = temp->next;
   }
 
-  return dummyNode->next;
+  Node *deleteNode = temp->next;
+
+  temp->next = deleteNode->next;
+
+  delete deleteNode;
+
+  return head;
 }
 
 int main()
@@ -122,9 +140,13 @@ int main()
   cout << "Linked list after conversion from array-2: ";
   printLinkedList(head2);
 
-  Node *sumList = addTwoNumbers(head1, head2);
-  std::cout << "Addition of Two Numbers using Linked List yields a sum: ";
-  printLinkedList(sumList);
+  Node *newHead1 = removeNthFromEndBruteForce(head1, 5);
+  std::cout << "Linked After Removing Kth Element From End: ";
+  printLinkedList(newHead1);
+
+  Node *newHead2 = removeNthFromEndBruteForce(head2, 5);
+  std::cout << "Linked After Removing Kth Element From End: ";
+  printLinkedList(newHead2);
 
   return 0;
 }
