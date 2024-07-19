@@ -36,6 +36,7 @@ vector<int> IntersectionArrayBrute(vector<int> &a, vector<int> &b, int n1, int n
     return ans;
 }
 
+
 int main()
 {
 
