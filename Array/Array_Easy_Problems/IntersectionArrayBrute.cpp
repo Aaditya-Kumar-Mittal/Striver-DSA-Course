@@ -36,7 +36,25 @@ vector<int> IntersectionArrayBrute(vector<int> &a, vector<int> &b, int n1, int n
     return ans;
 }
 
+//Intersecction using unordered_set
+int NumberofElementsInIntersection(int a[], int b[], int n, int m)
+{
+    // Your code goes here
+    int count = 0;
 
+    unordered_set<int> set_a(a, a + n);
+    unordered_set<int> set_b(b, b + m);
+
+    for (int element : set_a)
+    {
+        if (set_b.find(element) != set_b.end())
+        {
+            count++;
+        }
+    }
+
+    return count;
+}
 int main()
 {
 
