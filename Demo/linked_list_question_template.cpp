@@ -43,73 +43,6 @@ void printLinkedList(Node *head)
   }
   cout << endl;
 }
-
-Node *removeNthFromEndTwoPointers(Node *head, int k)
-{
-  Node *fast = head, *slow = head;
-
-  for (int i = 0; i < k; i++)
-    fast = fast->next;
-
-  if (fast == nullptr)
-    return head->next;
-
-  while (fast->next != nullptr)
-  {
-    fast = fast->next;
-    slow = slow->next;
-  }
-
-  Node *deleteNode = slow->next;
-
-  slow->next = deleteNode->next;
-
-  delete deleteNode;
-
-  return head;
-}
-
-Node *removeNthFromEndBruteForce(Node *head, int k)
-{
-
-  Node *temp = head;
-
-  int count = 0;
-
-  while (temp != nullptr)
-  {
-    count++;
-
-    temp = temp->next;
-  }
-
-  if (count == k)
-    return head->next;
-
-  int resultant = count - k;
-
-  temp = head;
-
-  while (temp != nullptr)
-  {
-
-    resultant--;
-
-    if (resultant == 0)
-      break;
-
-    temp = temp->next;
-  }
-
-  Node *deleteNode = temp->next;
-
-  temp->next = deleteNode->next;
-
-  delete deleteNode;
-
-  return head;
-}
-
 int main()
 {
   int n, m;
@@ -139,14 +72,6 @@ int main()
   Node *head2 = convertArraytoLinkedList(arr2);
   cout << "Linked list after conversion from array-2: ";
   printLinkedList(head2);
-
-  Node *newHead1 = removeNthFromEndBruteForce(head1, 5);
-  std::cout << "Linked After Removing Kth Element From End: ";
-  printLinkedList(newHead1);
-
-  Node *newHead2 = removeNthFromEndBruteForce(head2, 5);
-  std::cout << "Linked After Removing Kth Element From End: ";
-  printLinkedList(newHead2);
 
   return 0;
 }
