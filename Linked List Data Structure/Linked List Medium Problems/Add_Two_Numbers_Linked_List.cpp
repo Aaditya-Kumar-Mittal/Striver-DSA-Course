@@ -54,8 +54,11 @@ void printLinkedList(Node *head)
 Node *addTwoNumbers(Node *head1, Node *head2)
 {
   Node *t1 = head1, *t2 = head2;
+
   Node *dummyNode = new Node(-1); // Dummy node to handle result list
+
   Node *currentNode = dummyNode;  // Pointer to build the result list
+  
   int carry = 0;                  // Initialize carry
 
   // Traverse both linked lists
