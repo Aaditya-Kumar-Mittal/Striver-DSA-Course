@@ -1,0 +1,78 @@
+/*
+
+Sample Input 1
+2 1 3 5 6 4 7 -1
+Sample Output 1
+2 6 4 1 3 5 7
+Explanation of Sample Input 1
+Given singly linked list 2 -> 1 -> 3 -> 5 -> 6 -> 4 -> 7.
+
+Arrange all the even values in the starting and odd values at the end of the linked list.
+
+So ‘2, 6, 4’ must appear in the starting and ‘1, 3, 5, 7’ must appear at the end of linked list 
+
+So return 2 -> 6 -> 4 -> 1 -> 3 -> 5 -> 7
+Sample Input 2
+6 5 4 3 2 1 -1
+Sample Output 2
+6 4 2 5 3 1
+Constraints :-
+1 <= 'N' <= 5000
+0 <= node value <= 10^9  
+
+Where ‘N’ is the number of nodes in the linked list.
+
+Time Limit: 1 sec
+
+*/
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+ * Definition for linked list.
+ * class Node {
+ *  public:
+ *		int data;
+ *		Node *next;
+ *		Node() : data(0), next(nullptr) {};
+ *		Node(int x) : data(x), next(nullptr) {}
+ *		Node(int x, Node *next) : data(x), next(next) {}
+ * };
+ */
+
+Node* segregateEvenOdd(Node* head)
+{
+   vector<int> odd, even;
+
+   Node *temp = head;
+
+   while(temp!= nullptr){
+
+       if(temp->data%2 == 0){
+           even.push_back(temp->data);
+       }
+       else{
+           odd.push_back(temp->data);
+       }
+
+       temp=temp->next;
+   }
+
+   even.insert(even.end(), odd.begin(),odd.end());
+
+   temp=head;
+
+   int i = 0;
+
+   while(temp!=nullptr){
+
+       temp->data = even[i];
+       i++;
+       temp=temp->next;
+   }
+
+   return head;
+}
