@@ -1,0 +1,22 @@
+Node* findIntersection(Node* firstHead, Node* secondHead) {
+    map<Node*, int> mpp;
+
+    Node* temp = firstHead;
+
+    // Store nodes of the first list in the map
+    while (temp != nullptr) {
+        mpp[temp] = 1;
+        temp = temp->next;
+    }
+
+    // Check if any node in the second list exists in the map
+    temp = secondHead;
+    while (temp != nullptr) {
+        if (mpp[temp] == 1) {
+            return temp;
+        }
+        temp = temp->next;
+    }
+
+    return nullptr; // No intersection found
+}

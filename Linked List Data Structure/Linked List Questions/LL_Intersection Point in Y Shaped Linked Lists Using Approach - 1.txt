@@ -1,0 +1,62 @@
+// Function to find the collision point (intersection) of two linked lists when one list is longer
+Node* collisionPoint(Node *t1, Node *t2, int diff) {
+
+    // Move the pointer of the longer list forward by the difference in lengths
+    while(diff) {
+        diff--;
+        t2 = t2->next;  // Advance the pointer in the longer list
+    }
+
+    // Traverse both lists together until they meet at the intersection point
+    while(t1 != t2) {
+        t1 = t1->next;  // Move t1 to the next node
+        t2 = t2->next;  // Move t2 to the next node
+    }
+
+    return t1;  // Return the intersection node (or nullptr if there is no intersection)
+}
+
+// Function to find the intersection point of two linked lists
+Node* findIntersection(Node *firstHead, Node *secondHead) {
+   // Initialize pointers for the two lists
+   Node *t1 = firstHead;
+   int n1 = 0;
+
+   // Calculate the length of the first linked list
+   while(t1 != nullptr) {
+       n1++;
+       t1 = t1->next;
+   }
+
+   Node *t2 = secondHead;
+   int n2 = 0;
+
+   // Calculate the length of the second linked list
+   while(t2 != nullptr) {
+       n2++;
+       t2 = t2->next;
+   }
+
+   // Determine which list is longer and find the intersection point
+   if (n1 < n2) {
+       return collisionPoint(firstHead, secondHead, n2 - n1);  // Second list is longer
+   } else {
+       return collisionPoint(secondHead, firstHead, n1 - n2);  // First list is longer or they are equal
+   }
+}
+
+/*
+Analysis of the Code
+
+Time Complexity:
+- The function `findIntersection` has a time complexity of O(N + M), where N and M are the lengths of the two linked lists.
+  - Calculating the lengths of both linked lists takes O(N) and O(M) respectively.
+  - The function `collisionPoint` runs in O(N) or O(M) depending on which list is shorter.
+
+  Therefore, the overall time complexity is O(N + M).
+
+Space Complexity:
+- The space complexity is O(1) because the algorithm uses only a constant amount of additional memory for pointer variables.
+
+This implementation is efficient for finding the intersection point of two singly linked lists.
+*/
