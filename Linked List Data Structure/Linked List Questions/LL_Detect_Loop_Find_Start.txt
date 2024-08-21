@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+            int data;
+            Node *next;
+            Node()
+            {
+                this->data = 0;
+                next = NULL;
+            }
+            Node(int data)
+            {
+                this->data = data;
+                this->next = NULL;
+            }
+            Node(int data, Node* next)
+            {
+                this->data = data;
+                this->next = next;
+            }
+        };
+
+*****************************************************************/
+
+// Helper function to find the start of the loop using a hash map
+Node *findStart(Node *head) {
+    Node *temp = head;
+    unordered_map<Node*, int> mpp; // HashMap to store nodes
+
+    while(temp != nullptr) {
+        // If the node is already in the map, it means we found the start of the loop
+        if(mpp.find(temp) != mpp.end()) return temp;
+        mpp[temp] = 1;
+        temp = temp->next;
+    }
+
+    return nullptr; // Return nullptr if no loop is found
+}
+
+// Function to find the first node in the loop
+Node *firstNode(Node *head) {
+    // Handle edge cases where the list is empty or has only one node
+    if(head == nullptr || head->next == nullptr) return nullptr;
+
+    Node *slow = head, *fast = head;
+
+    // Use Floyd's Cycle-Finding Algorithm (Tortoise and Hare)
+    while(fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        // If slow and fast pointers meet, a loop is detected
+        if(slow == fast) return findStart(head); // Call the helper function to find the start of the loop
+    }
+
+    return nullptr; // Return nullptr if no loop is detected
+}
+
+/*
+### Analysis
+
+**Problem Name:** Find the First Node of the Loop in a Linked List
+
+**Approach:**
+- The code utilizes Floyd's Cycle-Finding Algorithm (Tortoise and Hare) to detect a cycle in a linked list.
+- Once a loop is detected, a helper function (`findStart`) is used to determine the first node in the loop by utilizing a hash map to keep track of the nodes that have been visited.
+
+**Time Complexity:**
+- The time complexity is `O(N)`, where `N` is the number of nodes in the linked list. The algorithm efficiently detects the cycle in linear time, and the search for the first node in the loop also takes linear time.
+
+**Space Complexity:**
+- The space complexity is `O(N)` due to the hash map used to store the visited nodes. In the worst case, all nodes might be stored in the hash map.
+
+**Edge Cases Considered:**
+- An empty linked list or a linked list with only one node, where the function correctly returns `nullptr`.
+- A linked list without any loops, where the function correctly identifies that there is no loop.
+- A linked list where the loop starts from the first node, ensuring that the function detects and returns the correct node.
+
+This method provides a robust solution for detecting the first node in a loop in a linked list, leveraging both Floyd's Cycle-Finding Algorithm and a hash map for accurate detection.
+*/
+
