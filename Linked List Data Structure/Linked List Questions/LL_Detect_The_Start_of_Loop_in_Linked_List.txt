@@ -1,0 +1,65 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    // Function to detect the start of a cycle in a linked list
+    ListNode *detectCycle(ListNode *head) {
+
+        // Edge case: if the list is empty or has only one node
+        if(head == nullptr || head->next == nullptr) return nullptr;
+        
+        ListNode *slow = head, *fast = head;
+
+        // Use Floyd's Cycle-Finding Algorithm (Tortoise and Hare)
+        while(fast != nullptr && fast->next != nullptr){
+
+            slow = slow->next;           // Move slow pointer by one step
+            fast = fast->next->next;     // Move fast pointer by two steps
+
+            if(slow == fast){
+                // Loop detected; now find the start of the loop
+
+                slow = head; // Move slow pointer to head
+
+                // Move both pointers at the same pace, they will meet at the loop start
+                while(slow != fast){
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+
+                return slow; // The start of the loop
+            }
+        }
+
+        return nullptr; // No cycle detected
+    }
+};
+
+/*
+### Analysis
+
+**Problem Name:** Detect the Start of a Cycle in a Linked List
+
+**Approach:**
+- This solution uses Floyd's Cycle-Finding Algorithm (Tortoise and Hare) to detect a cycle in the linked list.
+- Once a cycle is detected, the slow pointer is reset to the head of the list, and both the slow and fast pointers are moved one step at a time. The point where they meet is the start of the cycle.
+
+**Time Complexity:**
+- The time complexity of this algorithm is `O(N)`, where `N` is the number of nodes in the linked list. The cycle detection and the subsequent search for the start of the cycle both operate in linear time.
+
+**Space Complexity:**
+- The space complexity is `O(1)` since no additional space is used other than the two pointers (slow and fast).
+
+**Edge Cases Considered:**
+- An empty linked list or a linked list with only one node, where the function correctly returns `nullptr`.
+- A linked list without any cycles, where the function identifies that there is no cycle.
+- A linked list where the cycle starts from the first node, ensuring the function accurately detects and returns the start of the loop.
+
+This approach is optimal for detecting cycles and finding their starting points in a linked list, making it a reliable and efficient solution.
+*/
