@@ -1,0 +1,69 @@
+class Solution {
+public:
+    double myPow(double x, int n) {
+        double temp;  // To store the intermediate result of the power calculation
+
+        // Base case: any number to the power of 0 is 1
+        if (n == 0) return 1;
+
+        // Recursively compute power of x^(n/2)
+        temp = myPow(x, n / 2);
+
+        // If n is even, the result is temp * temp
+        if (n % 2 == 0) {
+            return temp * temp;
+        } else {
+            // If n is odd, multiply by x for positive n
+            if (n > 0) return x * temp * temp;
+            // If n is negative, divide temp * temp by x
+            else return temp * temp / x;
+        }
+    }
+};
+
+/*
+Analysis:
+- **Problem Name**: Power Function (Exponentiation by Squaring)
+- **Time Complexity**: O(log n), where `n` is the exponent. The algorithm divides the problem size by 2 each time, leading to a logarithmic number of recursive calls.
+- **Space Complexity**: O(log n), due to the recursion stack. Each recursive call adds a new frame to the stack, and there are at most log(n) recursive calls.
+
+Explanation:
+1. **Base Case**:
+   - When `n` is 0, return 1 because any number raised to the power of 0 is 1.
+
+2. **Recursive Case**:
+   - Compute `temp = myPow(x, n / 2)`.
+   - If `n` is even, the result is `temp * temp`.
+   - If `n` is odd:
+     - For positive `n`, multiply by `x` to get the result: `x * temp * temp`.
+     - For negative `n`, divide `temp * temp` by `x` to handle the negative exponent correctly: `temp * temp / x`.
+
+3. **Negative Exponent**:
+   - For negative exponents, the result is \( \frac{1}{\text{result of positive exponent}} \), hence the division by `x` is necessary.
+*/
+
+
+class Solution{
+    public:
+    //You need to complete this fucntion
+    
+    int MOD = 1000000007;
+    
+    long long power(int x,int n)
+    {
+     
+        if(n == 1) return x;
+        
+        if(n == 0) return 1;
+        
+        long long temp = power(x, n/2) % MOD;
+        
+        temp = (temp * temp) % MOD;
+        
+        if(n & 1) temp = (temp * x) % MOD;
+        
+        return temp;
+        
+    }
+
+};
