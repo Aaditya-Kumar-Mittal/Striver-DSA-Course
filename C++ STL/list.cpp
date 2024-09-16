@@ -12,6 +12,7 @@ void explainList()
     cout << "------------------------------------------------------------------------------------------------" << endl;
     cout << endl;
     cout << endl;
+    cout << endl;
 
     std::cout << "List Container" << std::endl;
 
