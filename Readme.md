@@ -38,7 +38,7 @@ Using the above lines of code optimizes input and output operations by:
 
 This approach is highly recommended in scenarios where efficient handling of large amounts of data is critical, such as in competitive programming.
 
-## Another Optimization Technique
+## Optimization Technique - 2
 
 ### Code Breakdown
 
@@ -91,3 +91,121 @@ inline const auto optimize = []() {
 ### When to Use
 
 - This optimization is particularly useful in competitive programming or performance-critical code where you are using only C++ streams (`std::cin`, `std::cout`) and want to minimize the overhead. However, after using this, you **should avoid mixing C-style I/O** (`scanf`, `printf`) with C++ I/O.
+
+The code snippet you've provided is an initialization block commonly used in competitive programming to optimize input/output performance. Let’s break it down step by step:
+
+### Code:
+
+```cpp
+auto init = []() {
+   ios::sync_with_stdio(false);
+   cin.tie(nullptr);
+   return '$';
+}();
+```
+
+### Explanation:
+
+#### 1. **`auto init = []() { ... }();`**
+
+- This part defines and immediately invokes a **lambda function** in C++.
+- A **lambda function** is an anonymous function that can be defined and called in place.
+- Here, the lambda function does not take any parameters (`[]()`), and it's executed immediately (`();`).
+- The result of the lambda function is stored in the variable `init`, but the purpose of this block is mainly to set up the input/output optimizations, not to store `init`.
+
+#### 2. **`ios::sync_with_stdio(false);`**
+
+- This line disables the synchronization between the C++ standard streams (like `cin`/`cout`) and the C standard streams (like `scanf`/`printf`).
+- By default, `cin` and `cout` are synchronized with `scanf` and `printf`, which ensures compatibility between C-style and C++-style I/O. However, this synchronization adds a performance overhead.
+- **Disabling synchronization** allows for faster input/output operations when only using C++ streams (`cin`, `cout`), but it means you **should not mix C-style I/O (`scanf`/`printf`) with C++-style I/O** in the same program after this point.
+
+#### 3. **`cin.tie(nullptr);`**:
+
+- This line unties the `cin` stream from `cout`.
+- By default, `cin` and `cout` are **tied** together, which means every time you use `cin`, `cout` is automatically flushed (i.e., any pending output in `cout` is printed to the console). This ensures that the user sees the prompt before providing input.
+- **Untying** `cin` from `cout` (by passing `nullptr`) means that `cout` will not automatically flush before `cin` reads input. This can improve performance by reducing unnecessary flushing of the output buffer.
+
+#### 4. **`return '$';`**
+
+- This is the return value of the lambda function, which is `'$',` but it doesn’t really have any significant role in the performance optimization.
+- The return value is just a placeholder, often used in these types of lambda blocks, and doesn't affect input/output. It's mainly to satisfy the syntax of the lambda function, as every lambda function needs a return statement if it returns something.
+
+#### 5. **The use of `init` variable**
+
+- The variable `init` stores the return value of the lambda function (in this case, the character `'$',`), but this variable is **not typically used later in the code**. The main reason this block exists is to run the lambda function for I/O optimizations as soon as the program starts.
+- This is a common idiom in competitive programming to reduce boilerplate code and keep the `main()` function cleaner.
+
+### Purpose:
+
+The main purpose of this code block is to **optimize the input/output operations** in C++ programs, particularly useful in competitive programming, where speed is critical. Specifically, it:
+
+1. Disables synchronization between C and C++ I/O streams for faster input/output.
+2. Unties `cin` from `cout` to prevent automatic flushing of the output buffer, further improving performance.
+
+### Important Note:
+
+After this block of code is run, **do not mix C++ I/O (`cin`/`cout`) with C I/O (`scanf`/`printf`)** because they are no longer synchronized, which can lead to unexpected behavior.
+
+---
+
+In summary, this snippet is a performance optimization for faster input/output in C++ programs, commonly used in scenarios where speed is essential, such as competitive programming.
+
+## Optimization Technique - 3
+
+The code snippet you've provided is an initialization block commonly used in competitive programming to optimize input/output performance. Let’s break it down step by step:
+
+### Code -2
+
+```cpp
+auto init = []() {
+   ios::sync_with_stdio(false);
+   cin.tie(nullptr);
+   return '$';
+}();
+```
+
+### Explanation - 2
+
+#### 1. **`auto init = []() { ... }();`**
+
+- This part defines and immediately invokes a **lambda function** in C++.
+- A **lambda function** is an anonymous function that can be defined and called in place.
+- Here, the lambda function does not take any parameters (`[]()`), and it's executed immediately (`();`).
+- The result of the lambda function is stored in the variable `init`, but the purpose of this block is mainly to set up the input/output optimizations, not to store `init`.
+
+#### 2. **`ios::sync_with_stdio(false);`**
+
+- This line disables the synchronization between the C++ standard streams (like `cin`/`cout`) and the C standard streams (like `scanf`/`printf`).
+- By default, `cin` and `cout` are synchronized with `scanf` and `printf`, which ensures compatibility between C-style and C++-style I/O. However, this synchronization adds a performance overhead.
+- **Disabling synchronization** allows for faster input/output operations when only using C++ streams (`cin`, `cout`), but it means you **should not mix C-style I/O (`scanf`/`printf`) with C++-style I/O** in the same program after this point.
+
+#### 3. **`cin.tie(nullptr);`**
+
+- This line unties the `cin` stream from `cout`.
+- By default, `cin` and `cout` are **tied** together, which means every time you use `cin`, `cout` is automatically flushed (i.e., any pending output in `cout` is printed to the console). This ensures that the user sees the prompt before providing input.
+- **Untying** `cin` from `cout` (by passing `nullptr`) means that `cout` will not automatically flush before `cin` reads input. This can improve performance by reducing unnecessary flushing of the output buffer.
+
+#### 4. **`return '$';`**
+
+- This is the return value of the lambda function, which is `'$',` but it doesn’t really have any significant role in the performance optimization.
+- The return value is just a placeholder, often used in these types of lambda blocks, and doesn't affect input/output. It's mainly to satisfy the syntax of the lambda function, as every lambda function needs a return statement if it returns something.
+
+#### 5. **The use of `init` variable**
+
+- The variable `init` stores the return value of the lambda function (in this case, the character `'$',`), but this variable is **not typically used later in the code**. The main reason this block exists is to run the lambda function for I/O optimizations as soon as the program starts.
+- This is a common idiom in competitive programming to reduce boilerplate code and keep the `main()` function cleaner.
+
+### Purpose - 3
+
+The main purpose of this code block is to **optimize the input/output operations** in C++ programs, particularly useful in competitive programming, where speed is critical. Specifically, it:
+
+1. Disables synchronization between C and C++ I/O streams for faster input/output.
+2. Unties `cin` from `cout` to prevent automatic flushing of the output buffer, further improving performance.
+
+### Important Note
+
+After this block of code is run, **do not mix C++ I/O (`cin`/`cout`) with C I/O (`scanf`/`printf`)** because they are no longer synchronized, which can lead to unexpected behavior.
+
+---
+
+In summary, this snippet is a performance optimization for faster input/output in C++ programs, commonly used in scenarios where speed is essential, such as competitive programming.
