@@ -181,3 +181,45 @@ public:
     }
 };
 ```
+
+### GeeksForGeeks Solution
+
+```cpp
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class Solution {
+public:
+    // Function to calculate the span of stock’s price for all n days.
+    vector<int> calculateSpan(int price[], int n) {
+
+        stack<long long> st;
+
+        vector<int> stockSpan(n, 1);
+
+        // Traverse through each day's price
+        for(int i = 0; i < n; i++) {
+            // Pop elements from the stack while the current price is greater than the price at stack top index.
+            while(!st.empty() && price[st.top()] <= price[i]) {
+                st.pop();
+            }
+
+            // If stack becomes empty, all previous prices are smaller.
+            // Span is the entire length from day 0 to the current day.
+            if(st.empty()) {
+                stockSpan[i] = i + 1;
+            } else {
+                // Otherwise, span is the difference between the current day and the index of the last greater element.
+                stockSpan[i] = i - st.top();
+            }
+
+            // Push the current day's index onto the stack.
+            st.push(i);
+        }
+
+        return stockSpan;
+    }
+};
+```
