@@ -1,4 +1,4 @@
-# Fruit Into Baskets (Problem 904) ~ Longest Subarray With 2 Elements
+# Fruit Into Baskets (Problem 904) ~ Longest Subarray With at most 2 Elements
 
 ## Problem Statement
 
