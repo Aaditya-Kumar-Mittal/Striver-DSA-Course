@@ -327,6 +327,82 @@ public:
 };
 ```
 
+```cpp
+class DisjointSet {
+public:
+    vector<int> parent, sizeArr;
+
+    // Constructor to initialize parent and size arrays
+    DisjointSet(int n) {
+        parent.resize(n + 1);
+        sizeArr.resize(n + 1, 1);
+
+        for (int i = 0; i <= n; i++) {
+            parent[i] = i;
+        }
+    }
+
+    // Find function with path compression
+    int findParent(int node) {
+        if (node == parent[node])
+            return node;
+        return parent[node] = findParent(parent[node]);
+    }
+
+    // Union function by size
+    void unionBySize(int u, int v) {
+        int rootU = findParent(u);
+        int rootV = findParent(v);
+
+        if (rootU == rootV)
+            return;
+
+        if (sizeArr[rootU] < sizeArr[rootV]) {
+            parent[rootU] = rootV;
+            sizeArr[rootV] += sizeArr[rootU];
+        } else {
+            parent[rootV] = rootU;
+            sizeArr[rootU] += sizeArr[rootV];
+        }
+    }
+};
+
+class Solution {
+public:
+    int makeConnected(int n, vector<vector<int>>& connections) {
+        DisjointSet ds(n);
+
+        int countExtras = 0;
+
+        for (auto it : connections) {
+
+            int u = it[0];
+            int v = it[1];
+
+            if (ds.findParent(u) == ds.findParent(v)) {
+                // They are already connected, having the same parent
+                countExtras++;
+            } else {
+                ds.unionBySize(u, v);
+            }
+        }
+
+        int countConnected = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (ds.parent[i] == i) {
+                countConnected++;
+            }
+        }
+
+        if (countExtras >= (countConnected - 1)) {
+            return countConnected - 1;
+        }
+        return -1;
+    }
+};
+```
+
 ---
 
 ### Java Implementation
