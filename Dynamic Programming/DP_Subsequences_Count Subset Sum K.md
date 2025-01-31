@@ -94,3 +94,71 @@ int findWays(vector<int> &arr, int k)
   return tabulation(n, k, arr);
 }
 ```
+
+## For Arrays Including 0's as well
+
+```cpp
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution {
+  public:
+    int recursive_solution(int index, int target, vector<int> &arr)
+    {
+      if (index == 0)
+        {
+            if(target == 0 && arr[0] == 0) return 2;
+            else if(target == 0) return 1;
+            else if(arr[0] == target) return 1;
+            else return 0;
+        }
+
+      int not_picked = recursive_solution(index - 1, target, arr);
+      int picked = (target >= arr[index]) ? recursive_solution(index - 1, target - arr[index], arr) : 0;
+
+      return not_picked + picked;
+    }
+
+    int perfectSum(vector<int>& arr, int target) {
+        // code here
+        int n = arr.size();
+
+        return recursive_solution(n-1, target, arr);
+    }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    cin.ignore(); // Ignore newline character after t
+
+    while (t--) {
+        vector<int> arr;
+        int target;
+        string inputLine;
+
+        getline(cin, inputLine); // Read the array input as a line
+        stringstream ss(inputLine);
+        int value;
+        while (ss >> value) {
+            arr.push_back(value);
+        }
+
+        cin >> target;
+        cin.ignore(); // Ignore newline character after target input
+
+        Solution solution;
+        cout << solution.perfectSum(arr, target);
+        cout << "\n~\n";
+    }
+
+    return 0;
+}
+
+// } Driver Code Ends
+```
