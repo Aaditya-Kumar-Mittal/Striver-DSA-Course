@@ -20,6 +20,7 @@
     - [Tabulation Approach](#tabulation-approach)
     - [Space-Optimized Tabulation Approach](#space-optimized-tabulation-approach)
     - [Efficient Tabulation Approach](#efficient-tabulation-approach)
+    - [Binary Search Approach](#binary-search-approach)
   - [Complexity Analysis](#complexity-analysis)
   - [How to Run the Code](#how-to-run-the-code)
   - [Other Solutions](#other-solutions)
@@ -226,6 +227,45 @@ int tabulation_2(int n, vector<int>& arr) {
 
 ---
 
+### Binary Search Approach
+
+```cpp
+
+
+class Solution {
+  public:
+    // Function to find length of longest increasing subsequence.
+    // Function to find the length of the longest increasing subsequence.
+    int lis(vector<int>& arr) {
+        if (arr.empty()) return 0; // Edge case: empty array
+
+        vector<int> temp;
+        temp.push_back(arr[0]);
+
+        for (int i = 1; i < arr.size(); i++) {
+            if (arr[i] > temp.back()) {
+                temp.push_back(arr[i]);
+            } else {
+                // Find the position where arr[i] can replace an element in temp
+                auto it = lower_bound(temp.begin(), temp.end(), arr[i]);
+                int ind = distance(temp.begin(), it); // Convert iterator to index
+                temp[ind] = arr[i];
+            }
+        }
+
+        return temp.size();
+    }
+};
+```
+
+**Explanation:**
+
+- Uses **binary search** to find the longest increasing subsequence.
+- `lower_bound` function is used to find the position where `arr[i]` can replace an element in `temp`.
+- Returns the size of the longest increasing subsequence.
+- Time complexity: `O(n log n)`, where `n` is the size of the input array.
+- Space complexity: `O(n)`, where `n` is the size of the input array.
+
 ## Complexity Analysis
 
 | Approach             | Time Complexity | Space Complexity |
@@ -235,6 +275,7 @@ int tabulation_2(int n, vector<int>& arr) {
 | Tabulation           | `O(n^2)`        | `O(n^2)`         |
 | Space Optimized      | `O(n^2)`        | `O(n)`           |
 | Efficient Tabulation | `O(n^2)`        | `O(n)`           |
+| Binary Search        | `O(n log n)`    | `O(n)`           |
 
 ---
 
@@ -400,25 +441,25 @@ class Solution {
   #define ub(c, x) upper_bound(all(x),c)-x.begin()
   #define acc(x) accumulate(all(x),0)
   #define hi 100000000
-  
+
   int n;
   int a[2505];
-  
-  
+
+
       int lengthOfLIS(vector<int>& v) { n=v.size();
       rep(i,0,n+1) a[i] = 0;;
       a[0] = 1;
-  
+
       rep(i,1,n){ a[i] = 1;
           rep(j,0,i) if(v[i]>v[j]) a[i] = max(a[i],a[j]+1);
       }
-  
+
       // rep(i,0,n) cout<<a[i]<<" "; nln;
-  
+
       int ans=0;
       rep(i,0,n) ans = max(ans,a[i]);
       return ans;
-  
+
       }
   };
 ```
