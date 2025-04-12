@@ -1,6 +1,9 @@
-# Documenting my Data Structures and Algorithms Journey
+# My Data Structures and Algorithms Journey
 
-> This is important and one must never forget - _Level Sabke Niklenge, Par Niklenge Uske, Jo Khada Rahega - The Girl in the Video._
+> This is important and one must never forget
+>
+> - _Level Sabke Niklenge, Par Niklenge Uske, Jo Khada Rahega - The Girl in the Video._
+> - _When there is a whill, there is a will._
 
 ---
 
@@ -237,7 +240,7 @@ The main purpose of this code block is to **optimize the input/output operations
 
 ### Important Note
 
-After this block of code is run, **do not mix C++ I/O (`cin`/`cout`) with C I/O (`scanf`/`printf`)** because they are no longer synchronized, which can lead to unexpected behavior.
+- After this block of code is run, **do not mix C++ I/O (`cin`/`cout`) with C I/O (`scanf`/`printf`)** because they are no longer synchronized, which can lead to unexpected behavior.
 
 ---
 
