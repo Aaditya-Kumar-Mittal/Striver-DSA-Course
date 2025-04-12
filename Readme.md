@@ -3,7 +3,7 @@
 > This is important and one must never forget
 >
 > - _Level Sabke Niklenge, Par Niklenge Uske, Jo Khada Rahega - The Girl in the Video._
-> - _When there is a whill, there is a will._
+> - _When there is a will, there is a will._
 
 ---
 
