@@ -2,6 +2,29 @@
 
 using namespace std;
 
+vector<int> findRepeatAndMissingNumber(vector<int> &nums) {
+    int n = nums.size();
+    long long sumN = (long long)n * (n + 1) / 2;
+    long long sum2N = (long long)n * (n + 1) * (2 * n + 1) / 6;
+
+    long long arrSum = 0, arr2Sum = 0;
+
+    for (int i = 0; i < n; i++) {
+        arrSum += nums[i];
+        arr2Sum += 1LL * nums[i] * nums[i];
+    }
+
+    long long val1 = arrSum - sumN;      // x - y (repeating - missing)
+    long long val2 = arr2Sum - sum2N;    // x^2 - y^2 = (x - y)(x + y)
+    long long val3 = val2 / val1;        // x + y
+
+    int x = (val1 + val3) / 2;           // repeating
+    int y = x - val1;                    // missing
+
+    return {y, x};                       // return {missing, repeating}
+}
+
+
 // Function to find the missing and repeating numbers in an array
 vector<int> findMissingAndRepeatingNumber(vector<int> a, int n)
 {
