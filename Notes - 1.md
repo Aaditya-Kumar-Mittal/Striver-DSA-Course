@@ -10,3 +10,4 @@
   - If the narrow scope of your window is invalid, it doesn't always mean the wider scope is invalid. You need to increment the pointers to find out (this is why the 2 pointer solution works, after all). In a given narrow window, you cannot guarantee that this window means the solution cannot be found, because the narrow window is just a slice of a given string, array chunk, whatever. Then, if all sub problems are solved and the wider problem is also invalid, then we can say that all sub problems or sub strings cannot be formed to solve the problem.
   - With 2 rules above hold, we are able to optimize the brute-force solution to two pointers solution.
   - The real key here is the relationship of the sub problems to the greater whole.
+- [Important Problems - 1](https://leetcode.com/discuss/post/1094290/custom-comparator-function-cpp-by-rohanp-8u47/)
