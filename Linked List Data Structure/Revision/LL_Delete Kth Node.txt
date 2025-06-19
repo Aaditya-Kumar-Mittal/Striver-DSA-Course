@@ -1,0 +1,55 @@
+/* Link list Node
+struct Node
+{
+    int data;
+    struct Node* next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+*/
+class Solution {
+  public:
+    /* Function to delete a node from a linked list */
+    Node* deleteNode(Node* head, int x) {
+        // code here
+        
+        if(head == nullptr) return head;
+        
+        if(x == 1)
+        {
+            Node *temp = head;
+            
+            head = head->next;
+            
+            free(temp);
+            
+            return head;
+        }
+        
+        int count = 1;
+        
+        Node  *temp = head;
+        
+        while(temp != nullptr && count < x - 1){
+            
+            temp = temp->next;
+            
+            count++;
+        }
+        
+        if(temp != nullptr && temp->next != nullptr)
+        {
+            Node *toDelete = temp->next;
+            
+            temp->next = temp->next->next;
+            
+            delete toDelete;
+        }
+       
+        
+        return head;
+    }
+};
