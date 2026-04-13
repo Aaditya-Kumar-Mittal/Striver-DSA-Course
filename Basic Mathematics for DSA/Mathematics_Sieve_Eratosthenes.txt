@@ -1,0 +1,29 @@
+class Solution {
+  public:
+    vector<int> sieve(int n) {
+        // code here
+        
+        vector<int> allPrimeSieve(n+1, 1);
+        
+        for(int i = 2; i * i <= n; i++)
+        {
+            if(allPrimeSieve[i])
+            {
+                for(int p = i * i; p <= n; p += i)
+                {
+                    allPrimeSieve[p] = 0;
+                }
+            }
+        }
+        
+        vector<int> ans;
+        
+        for(int i = 2; i <= n; i++)
+        {
+            if(allPrimeSieve[i]) ans.push_back(i);
+        }
+        
+        return ans;
+        
+    }
+};

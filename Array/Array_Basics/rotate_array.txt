@@ -1,0 +1,33 @@
+class Solution {
+  public:
+  
+    void reverseArray(vector<int> &arr, int start, int end) {
+        // code here
+        
+        while(start <= end)
+        {
+            swap(arr[start], arr[end]);
+            start++;
+            end--;
+        }
+        
+    }
+
+    // Function to rotate an array by d elements in counter-clockwise direction.
+    void rotateArr(vector<int>& arr, int d) {
+        // code here
+        
+        int n = arr.size();
+        
+        if(n == 0 || n == 1) return;
+        
+        d = d % n;
+        
+        reverseArray(arr, 0 , d - 1);
+        
+        reverseArray(arr, d, n - 1);
+        
+        reverseArray(arr, 0, n - 1);
+        
+    }
+};
