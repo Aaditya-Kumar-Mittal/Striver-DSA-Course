@@ -1,0 +1,22 @@
+class Solution {
+    int maxSubarraySum(int[] arr) {
+        // Code here
+        
+        int n = arr.length;
+        
+        if(n == 0) return 0;
+        
+        if(n == 1) return arr[0];
+        
+        int maxSum = arr[0], result = arr[0];
+        
+        for(int i = 1; i < n; i++)
+        {
+            maxSum = Math.max(arr[i], maxSum + arr[i]);
+            
+            result = Math.max(result, maxSum);
+        }
+        
+        return result;
+    }
+}
